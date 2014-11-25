@@ -1,0 +1,29 @@
+body {
+	margin-top: 50px;
+	background-color: #dd4814;
+}
+
+#wrapper-all {
+	background-color: #FFF;
+}
+
+#carousel-wrapper {
+	background-color: #dd4814;
+}
+
+#carousel-wrapper .carousel-caption p {
+	 font-size: 16px;
+    font-size: 2.5vw;
+}
+
+#destaques-front {
+	text-align: center;
+}
+
+#destaques-front img {
+	margin: 0 auto;
+}
+
+#rodape {
+	color: #FFF;
+}
