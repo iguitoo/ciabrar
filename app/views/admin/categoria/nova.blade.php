@@ -4,8 +4,9 @@
 
     <div class="col-lg-12">
        <h2 class="sub-header">Nova Categoria</h2>
+       @include('templates.errorPanel')
         <div class="col-lg-6">
-           {{ Form::open(array('url'=>'admin.nova')) }}
+           {{ Form::open(array('url'=>'/admin/categoria/nova')) }}
                 <div class="form-group">
                     {{ Form::label('nome', 'Nome:', ['class'=>'control-label']) }}
                     {{ Form::text('nome', null, ['class'=>'form-control']) }}

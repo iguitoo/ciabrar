@@ -8,7 +8,7 @@ class CreateForeignKeys extends Migration {
 	public function up()
 	{
 		Schema::table('conteudos', function(Blueprint $table) {
-			$table->foreign('categoria_id')->references('id')->on('categorias')
+			$table->foreign('categoria_id')->references('id')->on('categoria')
 						->onDelete('restrict')
 						->onUpdate('cascade');
 		});

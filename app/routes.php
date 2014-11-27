@@ -27,4 +27,5 @@ Route::get('/admin', function()
     return View::make('admin.home');
 });
 
-Route::controller('/admin/categorias', 'CategoriasController');
+Route::controller('/admin/categoria', 'CategoriaController');
+Route::controller('/admin/conteudo', 'ConteudoController');

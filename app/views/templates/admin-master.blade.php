@@ -12,6 +12,7 @@
     <title>{{{ $title or 'Bem vindo'}}} - CBR Admin</title>
 
     <!-- Bootstrap core CSS -->
+    {{ HTML::style('/assets/dist/css/bootstrap.min.css') }}
     {{ HTML::style('/assets/dist/css/bootstrap-ciabrar.css') }}
 
     <!-- Custom styles for this template -->
@@ -20,6 +21,7 @@
   </head>
 
   <body>
+
     {{--MENU TOP--}}
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -50,28 +52,9 @@
       <div class="row">
         {{--SIDEBAR--}}
         <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="{{ URL::to('/admin') }}">Home<span class="sr-only">(current)</span></a></li>
-            <li><a href="{{ URL::to('/admin/categorias') }}">Categorias</a>
-                <ul>
-                    <li><a href="{{ URL::to('/admin/categorias/nova') }}">Nova</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-          </ul>
+
+            @include('templates.admin-sidebar-menu')
+
         </div>
 
         {{-- ******************************************************************
@@ -79,6 +62,21 @@
             ******************************************************************* --}}
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Painel de Administração</h1>
+
+            {{--MESSAGES--}}
+            @if(Session::has('message'))
+                <div class="row" id="message">
+                    <div class="alert alert-info alert-dismissable clearfix">
+                        <button class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+                        <table>
+                            <tr>
+                                <td width="60px"><i class="glyphicon glyphicon-info-sign bigger"></i></td>
+                                <td>{{{ Session::get('message') }}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            @endif
 
             <div class="row">
                 @yield('conteudo')
@@ -94,6 +92,58 @@
     {{ HTML::script('/assets/js/jquery.min.js') }}
 
     {{ HTML::script('/assets/dist/js/bootstrap.min.js') }}
+
+    <script>
+        $(document).ready(function(){
+
+            loadMenuState();
+
+            $('#panel-sidemenu .panel-collapse a').on('click', function(e){
+                var link = $(this).closest('.panel-default').attr('id');
+                setSessionStorageVar('clickedLinkName', link);
+            });
+
+            $('#panel-sidemenu').on('shown.bs.collapse', function(e){
+                var active = $('#panel-sidemenu .in').attr('id');
+                setSessionStorageVar('activeGroupMenuId', active);
+            });
+
+            $('#panel-home').on('click', function(){
+                removeSessionStorageVar('activeGroupMenuId');
+            })
+
+            $('#panel-sidemenu').on('hidden.bs.collapse', function(e){
+                removeSessionStorageVar('activeGroupMenuId')
+            });
+
+            //Deixa o menu collapse com o mesmo estado anterior
+            function loadMenuState(){
+                var activeGroupMenuId = getSessionStorageVar('activeGroupMenuId');
+                var clickedLinkName = getSessionStorageVar('clickedLinkName');
+
+                if(activeGroupMenuId !== null) {
+                    $('#panel-sidemenu .panel-collapse').removeClass('in');
+                    $('#' + activeGroupMenuId).addClass('in');
+
+                    $('#' + clickedLinkName).find('.panel-heading').addClass('panel-color');
+                }
+            }
+
+            //seta valor na session storage
+            function setSessionStorageVar(name, value) {
+                 sessionStorage.setItem(name, value);
+            }
+            //remove valor da session storage
+            function removeSessionStorageVar(name) {
+                sessionStorage.removeItem(name);
+            }
+            //recupera valor da session storage
+            function getSessionStorageVar(name) {
+                return sessionStorage.getItem(name);
+            }
+
+        });
+    </script>
 
   </body>
 </html>

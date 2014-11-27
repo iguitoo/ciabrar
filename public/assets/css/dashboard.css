@@ -103,3 +103,12 @@ body {
     display: inline-block;
     border-radius: 50%;
 }
+
+.glyphicon.smaller {font-size: 1em;}
+.glyphicon.bigger {font-size: 3em;}
+
+
+#panel-sidemenu .panel-color {
+    background-color: #dd4814;
+    color: #FFFFFF;
+}
