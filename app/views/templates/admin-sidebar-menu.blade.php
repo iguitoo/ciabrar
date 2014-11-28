@@ -24,8 +24,8 @@
         </div>
         <div class="panel-collapse collapse" id="menu-conteudos">
             <ul class="list-group">
-                <li class="list-group-item"><a href="{{ URL::to('/admin/conteudo/novo') }}">Nova</a></li>
-                <li class="list-group-item"><a href="{{ URL::to('/admin/conteudo') }}">Lista todas</a></li>
+                <li class="list-group-item"><a href="{{ URL::to('/admin/conteudo/novo') }}">Novo conteúdo</a></li>
+                <li class="list-group-item"><a href="{{ URL::to('/admin/conteudo') }}">Lista todos</a></li>
             </ul>
         </div>
     </div>

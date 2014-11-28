@@ -20,4 +20,13 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+    public function showPagina($link)
+    {
+        $conteudo = Conteudo::where('apelido', '=', $link)->firstOrFail();
+
+
+        return View::make('conteudo.pagina', compact('conteudo'))
+            ->with('title', $conteudo->titulo);
+    }
+
 }

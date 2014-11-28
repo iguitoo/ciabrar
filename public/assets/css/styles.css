@@ -3,15 +3,30 @@ body {
 	background-color: #dd4814;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: #dd4814;
+}
+
 #wrapper-all {
 	background-color: #FFF;
 }
 
-#carousel-wrapper {
+#header-wrapper {
 	background-color: #dd4814;
+    background: url("/assets/images/bkg-carousel.jpg") top no-repeat;
 }
 
-#carousel-wrapper .carousel-caption p {
+#phone-box {
+    background: url("/assets/images/bkg-phone.png") bottom right no-repeat;
+}
+
+#phone-box .contatos {
+	color: #FFFFFF;
+    padding: 5px;
+    font-size: 1.3em;
+}
+
+#header-wrapper .carousel-caption p {
 	 font-size: 16px;
     font-size: 2.5vw;
 }
@@ -28,3 +43,15 @@ body {
 	color: #FFF;
 }
 
+.boxed {
+    padding: 20px;
+    border: 1px #dddddd solid;
+    border-radius:2%;
+    -moz-border-radius:2%;
+    -webkit-border-radius:2%;
+    -khtml-border-radius: 2%;
+}
+
+.boxed p {
+    line-height: 1.5em;
+}

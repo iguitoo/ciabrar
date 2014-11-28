@@ -39,7 +39,7 @@
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <li><a href="{{ URL::to('/') }} " target="_blank">View Site</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -90,8 +90,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     {{ HTML::script('/assets/js/jquery.min.js') }}
-
     {{ HTML::script('/assets/dist/js/bootstrap.min.js') }}
+    {{ HTML::script('/assets/ckeditor/ckeditor.js') }}
+
+    @yield('script')
 
     <script>
         $(document).ready(function(){

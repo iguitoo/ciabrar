@@ -16,6 +16,8 @@ Route::get('/', function()
 	return View::make('home');
 });
 
+Route::get('/paginas/{link}', array('as'=>'pagina', 'uses'=>'HomeController@showPagina'));
+
 
 
 
