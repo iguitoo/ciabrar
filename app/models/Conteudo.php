@@ -14,7 +14,7 @@ class Conteudo extends Eloquent {
 
     public static $rules = array(
         'titulo' => 'required',
-        'apelido' => 'required|max:40|unique:conteudos',
+        'apelido' => 'required|max:40|unique:conteudos,apelido,{ignore_id}',
         'texto' => 'required',
     );
 
