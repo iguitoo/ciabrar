@@ -48,6 +48,8 @@
       </div>
     </nav>
 
+    @include('templates.admin-sidebar-push-menu')
+
     <div class="container-fluid">
       <div class="row">
         {{--SIDEBAR--}}
